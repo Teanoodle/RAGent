@@ -21,6 +21,7 @@ The repository currently contains:
 - Modality labels for text, tables, images, charts, and formulas
 - A page-aware PDF loader built on the shared ingestion model
 - A line-aware TXT loader that preserves inclusive source line ranges
+- A structure-aware Markdown loader with headings, section paths, lists, and code
 - Extension-based loader dispatch that can grow to support more formats
 - A command that previews normalized document content
 - Automated tests for loading, metadata, dispatch, errors, and the CLI
@@ -29,12 +30,12 @@ Currently implemented input formats:
 
 - PDF files with an extractable text layer
 - UTF-8 TXT files, including files with a UTF-8 byte-order mark
+- UTF-8 Markdown files using `.md` or `.markdown`
 
 Planned input formats:
 
 - DOCX
 - HTML
-- Markdown
 - Scanned documents through OCR
 
 Planned multimodal capabilities:
@@ -74,6 +75,12 @@ Inspect a plain-text document with line-range metadata:
 .\.venv\Scripts\python.exe -m ragent inspect-document "tests\fixtures\sample.txt" --max-chars 500
 ```
 
+Inspect Markdown structure and section metadata:
+
+```powershell
+.\.venv\Scripts\python.exe -m ragent inspect-document "tests\fixtures\sample.md" --max-chars 500
+```
+
 The earlier PDF-specific command remains available for compatibility:
 
 ```powershell
@@ -102,6 +109,7 @@ RAGent/
 |   |   |-- __init__.py
 |   |   |-- errors.py
 |   |   |-- loader.py
+|   |   |-- markdown_loader.py
 |   |   |-- models.py
 |   |   |-- pdf_loader.py
 |   |   `-- txt_loader.py
@@ -111,10 +119,12 @@ RAGent/
 |-- tests/
 |   |-- test_cli.py
 |   |-- test_document_loader.py
+|   |-- test_markdown_loader.py
 |   |-- test_models.py
 |   |-- test_pdf_loader.py
 |   |-- test_txt_loader.py
 |   |-- fixtures/
+|   |   |-- sample.md
 |   |   `-- sample.txt
 |   `-- test_smoke.py
 |-- .env.example

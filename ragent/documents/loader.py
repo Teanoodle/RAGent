@@ -6,6 +6,7 @@ from collections.abc import Callable
 from pathlib import Path
 
 from ragent.documents.errors import DocumentLoadError
+from ragent.documents.markdown_loader import load_markdown
 from ragent.documents.models import SourceDocument
 from ragent.documents.pdf_loader import load_pdf
 from ragent.documents.txt_loader import load_txt
@@ -13,6 +14,8 @@ from ragent.documents.txt_loader import load_txt
 DocumentLoader = Callable[[str | Path], SourceDocument]
 
 LOADERS: dict[str, DocumentLoader] = {
+    ".markdown": load_markdown,
+    ".md": load_markdown,
     ".pdf": load_pdf,
     ".txt": load_txt,
 }

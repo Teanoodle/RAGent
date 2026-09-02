@@ -21,7 +21,7 @@ Acceptance criteria:
 
 ### M1.1: Format-neutral ingestion model
 
-Status: Implemented locally and awaiting review.
+Status: Completed.
 
 Learning goals:
 
@@ -38,8 +38,8 @@ Acceptance criteria:
 
 ### M1.2: Multi-format text ingestion
 
-Status: In progress. PDF and TXT are implemented locally; Markdown, DOCX, and
-HTML remain planned.
+Status: In progress. PDF and TXT are complete; Markdown is implemented and
+awaiting review. DOCX and HTML remain planned.
 
 Supported targets:
 
@@ -47,7 +47,7 @@ Supported targets:
 - DOCX with headings and paragraph positions
 - HTML with title, heading hierarchy, and source URL
 - TXT with line ranges (implemented locally)
-- Markdown with headings, prose, lists, and code blocks
+- Markdown with headings, prose, lists, and code blocks (implemented locally)
 
 Acceptance criteria:
 

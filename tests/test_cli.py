@@ -70,6 +70,24 @@ class CommandLineTests(unittest.TestCase):
         self.assertEqual(exit_code, 1)
         self.assertIn("not valid UTF-8", output.getvalue())
 
+    def test_inspect_document_prints_markdown_sections_and_line_ranges(self) -> None:
+        with TemporaryDirectory() as temporary_directory:
+            markdown_path = Path(temporary_directory) / "guide.md"
+            markdown_path.write_text(
+                "# Guide\n\n## Install\n\nRun the command.", encoding="utf-8"
+            )
+
+            output = StringIO()
+            with redirect_stdout(output):
+                exit_code = main(["inspect-document", str(markdown_path)])
+
+        self.assertEqual(exit_code, 0)
+        self.assertIn("Type: text/markdown", output.getvalue())
+        self.assertIn("Blocks: 3", output.getvalue())
+        self.assertIn("Section: Guide > Install", output.getvalue())
+        self.assertIn("Lines 5-5", output.getvalue())
+        self.assertIn("Run the command.", output.getvalue())
+
     def test_inspect_document_rejects_non_positive_preview_length(self) -> None:
         error_output = StringIO()
         with redirect_stderr(error_output):
