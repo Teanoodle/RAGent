@@ -1,0 +1,4 @@
+RAGent preserves evidence locations.
+Plain-text blocks keep their source line ranges.
+
+This paragraph begins on line four.

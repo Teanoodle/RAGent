@@ -1,4 +1,4 @@
-"""Smoke tests for the initial project scaffold."""
+"""Smoke tests for the RAGent package."""
 
 import unittest
 
@@ -7,15 +7,14 @@ from ragent.cli import READY_MESSAGE
 
 
 class ProjectSmokeTest(unittest.TestCase):
-    """Verify that the package can be imported before feature work begins."""
+    """Verify that the package and default command remain available."""
 
     def test_package_has_a_version(self) -> None:
         self.assertEqual(__version__, "0.1.0")
 
-    def test_ready_message_describes_the_next_milestone(self) -> None:
-        self.assertIn("V0", READY_MESSAGE)
+    def test_ready_message_describes_document_ingestion(self) -> None:
+        self.assertIn("document ingestion", READY_MESSAGE)
 
 
 if __name__ == "__main__":
     unittest.main()
-

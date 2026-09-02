@@ -5,14 +5,15 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ragent-learning-project"
 version = "0.1.0"
-description = "A learning-focused, traceable RAG system for technical documents"
+description = "A traceable, multimodal Agentic RAG system with financial research extensions"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "pymupdf>=1.28,<2",
+]
 
 [project.scripts]
 ragent = "ragent.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["ragent*"]
-
