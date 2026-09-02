@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ragent-learning-project"
+version = "0.1.0"
+description = "A learning-focused, traceable RAG system for technical documents"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+ragent = "ragent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ragent*"]
+
